@@ -9,7 +9,9 @@
       "@screens": ["./screens"],
       "@assets/*": ["./assets/*"],
       "@config/*": ["./config/*"],
-      "@config": ["./config"]
+      "@config": ["./config"],
+      "@api/*": ["./api/*"],
+      "@api": ["./api"]
     }
   },
   "include": ["**/*.ts", "**/*.tsx"],

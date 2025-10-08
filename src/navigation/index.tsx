@@ -73,9 +73,9 @@ const TabNavigator = () => {
         tabBarStyle: {
           backgroundColor: AppColors.darkPurple,
           borderTopWidth: 0,
-          //   height: 80,
+          // height: 80,
           //   paddingBottom: 20,
-          //   paddingTop: 10,
+          paddingTop: 10,
         },
         tabBarActiveTintColor: "#fff",
         tabBarInactiveTintColor: "#67686D",
@@ -147,22 +147,12 @@ const RootNavigator = () => {
         cardStyle: { backgroundColor: "#1E1E1E" },
       }}
     >
-      {/* Main Tab Navigation */}
       <Stack.Screen name="TabNavigator" component={TabNavigator} />
-
-      {/* Movie Details Screen */}
       <Stack.Screen
         name="MovieDetails"
         component={MovieDetailsScreen}
         options={{
-          headerShown: true,
-          headerTitle: "",
-          headerStyle: {
-            backgroundColor: "transparent",
-            elevation: 0,
-            shadowOpacity: 0,
-          },
-          headerTintColor: "#fff",
+          headerShown: false,
         }}
       />
 
