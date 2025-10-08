@@ -7,6 +7,8 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: AppColors.white,
+    alignItems: "center",
+    justifyContent: "center",
   },
   topContainer: {
     width: "100%",
