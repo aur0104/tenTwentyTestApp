@@ -1,8 +1,5 @@
 import { AppColors } from "@config/appColor";
-import { StyleSheet, Dimensions } from "react-native";
-
-const { width } = Dimensions.get("window");
-
+import { StyleSheet } from "react-native";
 const styles = StyleSheet.create({
   container: {
     flex: 1,

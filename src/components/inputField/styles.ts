@@ -6,13 +6,14 @@ const styles = StyleSheet.create({
   container: {
     flexDirection: "row",
     alignItems: "center",
-    backgroundColor: AppColors.lightGray,
+    backgroundColor: AppColors.offWhite,
     borderRadius: 30,
     paddingHorizontal: 16,
     paddingVertical: 12,
     marginHorizontal: 20,
-    width: "90%",
+    width: "100%",
     alignSelf: "center",
+    justifyContent: "space-between",
   },
   iconContainer: {
     padding: 4,

@@ -1,6 +1,6 @@
 import axios, { AxiosError, AxiosResponse } from "axios";
 export const URLS = {
-  baseURL: "https://api.themoviedb.org/3/movie/",
+  baseURL: "https://api.themoviedb.org/3/",
   imageBaseUrl: "https://image.tmdb.org/t/p/w500",
 };
 const apiClient = axios.create({

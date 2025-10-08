@@ -112,7 +112,10 @@ export default function WatchScreen(props: any) {
     <View style={styles.container}>
       <View style={styles.topContainer}>
         <Typography type="SIXTEENMEDIUM">Watch</Typography>
-        <TouchableOpacity>
+        <TouchableOpacity
+          activeOpacity={0.7}
+          onPress={() => props.navigation.navigate("Search")}
+        >
           <SearchIcon />
         </TouchableOpacity>
       </View>

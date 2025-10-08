@@ -20,6 +20,7 @@ import {
 } from "@assets/images";
 import { AppColors } from "@config/appColor";
 import fonts from "@config/fonts";
+import SearchMovieScreen from "@screens/StackScreens/SearchScreen";
 const PlaceholderScreen = ({ route }: any) => {
   const { name } = route;
   return null;
@@ -155,40 +156,18 @@ const RootNavigator = () => {
           headerShown: false,
         }}
       />
-
-      {/* Search Screen */}
       <Stack.Screen
         name="Search"
-        component={PlaceholderScreen}
+        component={SearchMovieScreen}
         options={{
-          headerShown: true,
-          headerTitle: "",
-          headerStyle: {
-            backgroundColor: "#1E1E1E",
-            elevation: 0,
-            shadowOpacity: 0,
-          },
-          headerTintColor: "#fff",
+          headerShown: false,
         }}
       />
-
-      {/* Seat Selection Screen */}
       <Stack.Screen
         name="SeatSelection"
         component={SeatSelectionScreen}
         options={{
-          headerShown: true,
-          headerTitle: "Select Seats",
-          headerStyle: {
-            backgroundColor: "#1E1E1E",
-            elevation: 0,
-            shadowOpacity: 0,
-          },
-          headerTintColor: "#fff",
-          headerTitleStyle: {
-            fontSize: 18,
-            fontWeight: "600",
-          },
+          headerShown: false,
         }}
       />
 

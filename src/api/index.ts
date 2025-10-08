@@ -5,15 +5,28 @@ const LANGUAGE = "en-US";
 
 export const getUpcomingMovies = async (page: number = 1) => {
   return apiClient.get(
-    `upcoming?api_key=${API_KEY}&language=${LANGUAGE}&page=${page}`
+    `movie/upcoming?api_key=${API_KEY}&language=${LANGUAGE}&page=${page}`
   );
 };
 export const getMovieDetails = async (movieId: number) => {
-  return apiClient.get(`${movieId}?api_key=${API_KEY}&language=${LANGUAGE}`);
+  return apiClient.get(
+    `movie/${movieId}?api_key=${API_KEY}&language=${LANGUAGE}`
+  );
 };
 
 export const getMovieVideos = async (movieId: number) => {
   return apiClient.get(
-    `${movieId}/videos?api_key=${API_KEY}&language=${LANGUAGE}`
+    `movie/${movieId}/videos?api_key=${API_KEY}&language=${LANGUAGE}`
   );
+};
+
+export const searchMovies = async (query: string, page: number = 1) => {
+  return apiClient.get("search/movie", {
+    params: {
+      api_key: API_KEY,
+      language: LANGUAGE,
+      query: query,
+      page: page,
+    },
+  });
 };
