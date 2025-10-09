@@ -10,7 +10,6 @@ import {
   MoreScreen,
   MovieDetailsScreen,
   SeatSelectionScreen,
-  BookingConfirmationScreen,
 } from "@screens";
 import {
   DashBoardIcon,
@@ -70,8 +69,8 @@ const TabNavigator = () => {
         tabBarStyle: {
           backgroundColor: AppColors.darkPurple,
           borderTopWidth: 0,
-          // height: 80,
-          //   paddingBottom: 20,
+          height: 80,
+          //paddingBottom: 20,
           paddingTop: 10,
         },
         tabBarActiveTintColor: "#fff",
@@ -162,13 +161,6 @@ const RootNavigator = () => {
       <Stack.Screen
         name="SeatSelection"
         component={SeatSelectionScreen}
-        options={{
-          headerShown: false,
-        }}
-      />
-      <Stack.Screen
-        name="BookingConfirmation"
-        component={BookingConfirmationScreen}
         options={{
           headerShown: false,
         }}

@@ -204,12 +204,12 @@ const styles = StyleSheet.create({
     fontSize: 10,
   },
   selectedSeatsInfo: {
-    paddingHorizontal: 20,
+    paddingHorizontal: "9%",
     paddingVertical: 10,
   },
   selectedSeatsCount: {
     flexDirection: "row",
-    justifyContent: "space-between",
+
     alignItems: "center",
   },
   selectedCount: {

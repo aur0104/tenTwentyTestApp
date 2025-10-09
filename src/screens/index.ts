@@ -7,4 +7,3 @@ export { default as MoreScreen } from "./TabScreens/More";
 // Stack Screens
 export { default as MovieDetailsScreen } from "./StackScreens/MovieDetails";
 export { default as SeatSelectionScreen } from "./StackScreens/SeatSelection";
-export { default as BookingConfirmationScreen } from "./StackScreens/BookingConfirmation";

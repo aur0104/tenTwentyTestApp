@@ -9,7 +9,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 16,
     paddingVertical: 12,
     backgroundColor: "transparent",
-    width: "90%",
+    width: "100%",
     alignSelf: "center",
   },
   leftSection: {

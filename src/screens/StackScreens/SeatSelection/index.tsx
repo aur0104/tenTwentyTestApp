@@ -160,36 +160,7 @@ export default function SeatSelectionScreen({
     }
   };
 
-  const handleProceedToPay = () => {
-    const selectedSeatData = selectedSeats
-      .map((seatId) => seats.find((seat) => seat.id === seatId))
-      .filter(Boolean);
-
-    const totalPrice = selectedSeatData.reduce(
-      (total, seat) => total + (seat?.price || 0),
-      0
-    );
-
-    navigation.navigate("BookingConfirmation", {
-      bookingData: {
-        movie: movieData || { title: "The King's Man" },
-        selectedDate: dates.find((d) => d.id === selectedDate),
-        selectedShowtime: showtimes.find((s) => s.id === selectedShowtime),
-        selectedSeats: selectedSeatData,
-        totalPrice,
-        bookingReference: `TKM${Date.now()}`,
-        bookingDate: new Date().toLocaleDateString(),
-      },
-    });
-  };
-
-  const calculateTotalPrice = () => {
-    return selectedSeats.reduce((total, seatId) => {
-      const seat = seats.find((s) => s.id === seatId);
-      return total + (seat?.price || 0);
-    }, 0);
-  };
-
+  const handleProceedToPay = () => {};
   const renderMiniSeatMap = (item: ShowTime) => {
     const rows = 8;
     const seatsPerRow = 14;
@@ -274,7 +245,7 @@ export default function SeatSelectionScreen({
         onPress={() => handleSeatSelection(seat.id)}
         disabled={seat.type === "unavailable"}
       >
-        <SeatComponent width={20} height={20} />
+        <SeatComponent />
       </TouchableOpacity>
     );
   };
@@ -309,9 +280,6 @@ export default function SeatSelectionScreen({
         >
           {Object.keys(seatsByRow).map((row) => (
             <View key={row} style={styles.seatRow}>
-              {/* <Typography type="TWELVEREGULAR" style={styles.rowLabel}>
-                {row}
-              </Typography> */}
               <View style={styles.seatsInRow}>
                 {seatsByRow[row].map(renderSeat)}
               </View>
@@ -365,14 +333,25 @@ export default function SeatSelectionScreen({
         {selectedSeats.length > 0 && (
           <View style={styles.selectedSeatsInfo}>
             <View style={styles.selectedSeatsCount}>
-              <Typography type="FOURTEENBOLD" style={styles.selectedCount}>
-                {selectedSeats.length.toString()} / 3 row
-              </Typography>
-              <TouchableOpacity onPress={() => setSelectedSeats([])}>
-                <Typography type="FOURTEENBOLD" style={styles.clearSelection}>
-                  ×
+              <View
+                style={{
+                  backgroundColor: "#A6A6A61A",
+                  flexDirection: "row",
+                  alignItems: "center",
+                  gap: 10,
+                  paddingHorizontal: 8,
+                  borderRadius: 10,
+                }}
+              >
+                <Typography type="FOURTEENBOLD" style={styles.selectedCount}>
+                  {selectedSeats.length.toString()} / 3 row
                 </Typography>
-              </TouchableOpacity>
+                <TouchableOpacity onPress={() => setSelectedSeats([])}>
+                  <Typography type="FOURTEENBOLD" style={styles.clearSelection}>
+                    ×
+                  </Typography>
+                </TouchableOpacity>
+              </View>
             </View>
           </View>
         )}
