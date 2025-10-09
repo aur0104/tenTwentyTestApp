@@ -51,7 +51,7 @@ const styles = StyleSheet.create({
   headerContainer: {
     flexDirection: "row",
     alignItems: "center",
-    marginTop: 20,
+    marginTop: 5,
   },
   backIcon: {
     marginRight: 15,

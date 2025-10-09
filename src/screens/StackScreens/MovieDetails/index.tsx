@@ -15,6 +15,7 @@ import Typography from "@components/typoGraphy";
 import VideoPlayerModal from "@components/VideoPlayerModal";
 import { AppColors } from "@config/appColor";
 import { CustomButton } from "@components/index";
+import { BackIcon } from "@assets/images";
 
 interface Genre {
   id: number;
@@ -177,9 +178,7 @@ export default function MovieDetailsScreen({ navigation, route }: any) {
               style={styles.backIcon}
               onPress={() => navigation.goBack()}
             >
-              <Typography type="SIXTEENREGULAR" style={styles.backIconText}>
-                ←
-              </Typography>
+              <BackIcon fill={AppColors.white} />
             </TouchableOpacity>
             <Typography type="SIXTEENMEDIUM" style={styles.headerTitle}>
               Watch
@@ -237,6 +236,7 @@ export default function MovieDetailsScreen({ navigation, route }: any) {
         showsVerticalScrollIndicator={false}
       >
         <View style={styles.contentSection}>
+          {/* Genres */}
           <View style={styles.genresSection}>
             <Typography type="SIXTEENBOLD" style={styles.sectionTitle}>
               Genres

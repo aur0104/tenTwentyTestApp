@@ -164,8 +164,7 @@ export default function SeatSelectionScreen({
   const renderMiniSeatMap = (item: ShowTime) => {
     const rows = 8;
     const seatsPerRow = 14;
-    console.log("Show time id ", item.id);
-    console.log("selected show time id ", selectedShowtime);
+
     return (
       <View
         style={[

@@ -1,6 +1,6 @@
 import { apiClient } from "./client";
+import { API_KEY } from "@env";
 
-const API_KEY = "1ccfdbeed16c1912b6ae0708df998f4b";
 const LANGUAGE = "en-US";
 
 export const getUpcomingMovies = async (page: number = 1) => {
