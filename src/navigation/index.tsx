@@ -21,10 +21,6 @@ import {
 import { AppColors } from "@config/appColor";
 import fonts from "@config/fonts";
 import SearchMovieScreen from "@screens/StackScreens/SearchScreen";
-const PlaceholderScreen = ({ route }: any) => {
-  const { name } = route;
-  return null;
-};
 
 // Custom Tab Label Component
 const CustomTabLabel = ({
@@ -170,24 +166,11 @@ const RootNavigator = () => {
           headerShown: false,
         }}
       />
-
-      {/* Booking Confirmation Screen */}
       <Stack.Screen
         name="BookingConfirmation"
         component={BookingConfirmationScreen}
         options={{
-          headerShown: true,
-          headerTitle: "Booking Summary",
-          headerStyle: {
-            backgroundColor: "#1E1E1E",
-            elevation: 0,
-            shadowOpacity: 0,
-          },
-          headerTintColor: "#fff",
-          headerTitleStyle: {
-            fontSize: 18,
-            fontWeight: "600",
-          },
+          headerShown: false,
         }}
       />
     </Stack.Navigator>

@@ -237,7 +237,6 @@ export default function MovieDetailsScreen({ navigation, route }: any) {
         showsVerticalScrollIndicator={false}
       >
         <View style={styles.contentSection}>
-          {/* Genres */}
           <View style={styles.genresSection}>
             <Typography type="SIXTEENBOLD" style={styles.sectionTitle}>
               Genres
@@ -252,8 +251,6 @@ export default function MovieDetailsScreen({ navigation, route }: any) {
               ))}
             </View>
           </View>
-
-          {/* Overview */}
           <View style={styles.overviewSection}>
             <Typography type="SIXTEENBOLD" style={styles.sectionTitle}>
               Overview
@@ -264,8 +261,6 @@ export default function MovieDetailsScreen({ navigation, route }: any) {
           </View>
         </View>
       </ScrollView>
-
-      {/* Video Player Modal */}
       <VideoPlayerModal
         visible={showVideoPlayer}
         videoUrl={trailerUrl}
