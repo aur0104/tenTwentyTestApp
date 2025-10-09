@@ -17,6 +17,7 @@ import {
 } from "@assets/images";
 import { AppColors } from "@config/appColor";
 import styles from "./styles";
+import { CustomButton } from "@components/index";
 
 const { width: SCREEN_WIDTH } = Dimensions.get("window");
 
@@ -189,20 +190,43 @@ export default function SeatSelectionScreen({
     }, 0);
   };
 
-  const renderMiniSeatMap = () => {
+  const renderMiniSeatMap = (item: ShowTime) => {
     const rows = 8;
     const seatsPerRow = 14;
-
+    console.log("Show time id ", item.id);
+    console.log("selected show time id ", selectedShowtime);
     return (
-      <View style={styles.miniSeatMapContainer}>
+      <View
+        style={[
+          styles.miniSeatMapContainer,
+          {
+            borderColor:
+              item.id === selectedShowtime
+                ? AppColors.blue
+                : AppColors.lightGray,
+          },
+        ]}
+      >
         {Array.from({ length: rows }, (_, rowIndex) => (
           <View key={rowIndex} style={styles.miniSeatRow}>
             {Array.from({ length: seatsPerRow }, (_, seatIndex) => {
               const seatType = Math.random();
               let seatColor = AppColors.blue;
-              if (seatType < 0.1) seatColor = AppColors.gray;
-              if (seatType > 0.8) seatColor = AppColors.purple;
-              if (seatType > 0.9) seatColor = AppColors.yellow;
+              let SeatIcon = RegularSeat;
+
+              if (seatType < 0.1) {
+                seatColor = AppColors.gray;
+                SeatIcon = NotAvailableSeat;
+              } else if (seatType > 0.9) {
+                seatColor = AppColors.yellow;
+                SeatIcon = FullfilledSeat;
+              } else if (seatType > 0.8) {
+                seatColor = AppColors.purple;
+                SeatIcon = VipSeat;
+              } else {
+                seatColor = AppColors.blue;
+                SeatIcon = RegularSeat;
+              }
 
               const isMiddleGap = seatIndex === 6 || seatIndex === 7;
 
@@ -210,11 +234,12 @@ export default function SeatSelectionScreen({
                 <View
                   key={seatIndex}
                   style={[
-                    styles.miniSeat,
-                    { backgroundColor: seatColor },
+                    styles.miniSeatIcon,
                     isMiddleGap && { marginHorizontal: 3 },
                   ]}
-                />
+                >
+                  <SeatIcon width={10} height={10} color={seatColor} />
+                </View>
               );
             })}
           </View>
@@ -277,13 +302,6 @@ export default function SeatSelectionScreen({
           showRightIcon={false}
         />
 
-        <View style={styles.screenIndicator}>
-          <Typography type="TWELVEREGULAR" style={styles.screenText}>
-            SCREEN
-          </Typography>
-          <View style={styles.screenLine} />
-        </View>
-
         <ScrollView
           style={styles.seatMapContainer}
           showsVerticalScrollIndicator={false}
@@ -291,9 +309,9 @@ export default function SeatSelectionScreen({
         >
           {Object.keys(seatsByRow).map((row) => (
             <View key={row} style={styles.seatRow}>
-              <Typography type="TWELVEREGULAR" style={styles.rowLabel}>
+              {/* <Typography type="TWELVEREGULAR" style={styles.rowLabel}>
                 {row}
-              </Typography>
+              </Typography> */}
               <View style={styles.seatsInRow}>
                 {seatsByRow[row].map(renderSeat)}
               </View>
@@ -328,6 +346,8 @@ export default function SeatSelectionScreen({
               Not available
             </Typography>
           </View>
+        </View>
+        <View style={styles.legend}>
           <View style={styles.legendItem}>
             <VipSeat width={16} height={16} />
             <Typography type="THIRTEENREGULAR" style={styles.legendText}>
@@ -337,7 +357,7 @@ export default function SeatSelectionScreen({
           <View style={styles.legendItem}>
             <RegularSeat width={16} height={16} />
             <Typography type="THIRTEENREGULAR" style={styles.legendText}>
-              Regular (50 $)
+              Regular(50 $)
             </Typography>
           </View>
         </View>
@@ -359,26 +379,20 @@ export default function SeatSelectionScreen({
 
         <View style={styles.bottomContainer}>
           <View style={styles.totalPriceContainer}>
-            <Typography type="THIRTEENREGULAR" style={styles.totalPriceLabel}>
-              Total Price
-            </Typography>
-            <Typography type="SIXTEENBOLD" style={styles.totalPrice}>
-              $ {calculateTotalPrice().toString()}
-            </Typography>
+            <Typography type="TENREGULAR">Total Price</Typography>
+            <Typography type="SIXTEENSEMIBOLD">$ 50</Typography>
           </View>
-
-          <TouchableOpacity
-            style={[
-              styles.proceedButton,
-              selectedSeats.length === 0 && styles.disabledButton,
-            ]}
+          <CustomButton
+            type="PRIMARY"
             onPress={handleProceedToPay}
-            disabled={selectedSeats.length === 0}
+            style={{ width: "65%" }}
+            typographyProps={{
+              type: "FOURTEENBOLD",
+              style: { color: AppColors.white },
+            }}
           >
-            <Typography type="FOURTEENBOLD" style={styles.proceedButtonText}>
-              Proceed to pay
-            </Typography>
-          </TouchableOpacity>
+            Proceed to Pay
+          </CustomButton>
         </View>
       </View>
     );
@@ -386,15 +400,12 @@ export default function SeatSelectionScreen({
 
   return (
     <View style={styles.container}>
-      <StatusBar barStyle="dark-content" backgroundColor={AppColors.white} />
-
       <Header
         title={movieData?.title || "The King's Man"}
         subtitle="In Theaters December 22, 2021"
         onLeftPress={handleBackPress}
         showRightIcon={false}
       />
-
       <ScrollView
         style={styles.content}
         showsVerticalScrollIndicator={false}
@@ -404,7 +415,6 @@ export default function SeatSelectionScreen({
           <Typography type="SIXTEENBOLD" style={styles.sectionTitle}>
             Date
           </Typography>
-
           <ScrollView
             horizontal
             showsHorizontalScrollIndicator={false}
@@ -458,7 +468,7 @@ export default function SeatSelectionScreen({
                   </Typography>
                 </View>
 
-                {renderMiniSeatMap()}
+                {renderMiniSeatMap(showtime)}
 
                 <View style={styles.priceContainer}>
                   <Typography type="THIRTEENREGULAR" style={styles.priceText}>
@@ -474,18 +484,17 @@ export default function SeatSelectionScreen({
       </ScrollView>
 
       <View style={styles.bottomContainer}>
-        <TouchableOpacity
-          style={[
-            styles.selectSeatsButton,
-            (!selectedDate || !selectedShowtime) && styles.disabledButton,
-          ]}
+        <CustomButton
+          type="PRIMARY"
           onPress={handleSelectSeats}
-          disabled={!selectedDate || !selectedShowtime}
+          typographyProps={{
+            type: "FOURTEENBOLD",
+            style: { color: AppColors.white },
+          }}
+          disabled={!selectedShowtime}
         >
-          <Typography type="FOURTEENBOLD" style={styles.selectSeatsText}>
-            Select Seats
-          </Typography>
-        </TouchableOpacity>
+          Select Seats
+        </CustomButton>
       </View>
     </View>
   );

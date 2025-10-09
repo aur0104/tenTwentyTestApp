@@ -17,6 +17,12 @@ const styles = StyleSheet.create({
   TWELVEBOLD: { fontSize: 12, fontFamily: fonts.FONT_FAMILIES.BOLD },
   TWELVEREGULAR: { fontSize: 12, fontFamily: fonts.FONT_FAMILIES.REGULAR },
   TWELVESEMIBOLD: { fontSize: 12, fontFamily: fonts.FONT_FAMILIES.SEMI_BOLD },
+  ELEVENBOLD: { fontSize: 11, fontFamily: fonts.FONT_FAMILIES.BOLD },
+  ELEVENREGULAR: { fontSize: 11, fontFamily: fonts.FONT_FAMILIES.REGULAR },
+  ELEVENSEMIBOLD: { fontSize: 11, fontFamily: fonts.FONT_FAMILIES.SEMI_BOLD },
+  TENBOLD: { fontSize: 10, fontFamily: fonts.FONT_FAMILIES.BOLD },
+  TENREGULAR: { fontSize: 10, fontFamily: fonts.FONT_FAMILIES.REGULAR },
+  TENSEMIBOLD: { fontSize: 10, fontFamily: fonts.FONT_FAMILIES.SEMI_BOLD },
 });
 
 export default styles;

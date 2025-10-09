@@ -76,9 +76,8 @@ const styles = StyleSheet.create({
   miniSeatMapContainer: {
     backgroundColor: AppColors.white,
     borderRadius: 8,
-    // padding: 15,
     marginBottom: 10,
-    // minHeight: 90,
+    paddingVertical: 30,
     borderWidth: 1,
     borderColor: AppColors.blue,
     alignItems: "center",
@@ -95,6 +94,11 @@ const styles = StyleSheet.create({
     borderRadius: 6,
     marginHorizontal: 1.5,
   },
+  miniSeatIcon: {
+    marginHorizontal: 1.5,
+    alignItems: "center",
+    justifyContent: "center",
+  },
   priceContainer: {
     alignItems: "flex-start",
   },
@@ -102,17 +106,13 @@ const styles = StyleSheet.create({
     color: AppColors.gray,
   },
   bottomContainer: {
-    padding: 20,
-    backgroundColor: AppColors.white,
-    borderTopWidth: 1,
-    borderTopColor: AppColors.lightGray,
-  },
-  selectSeatsButton: {
-    backgroundColor: AppColors.blue,
-    borderRadius: 12,
-    paddingVertical: 15,
+    paddingHorizontal: "9%",
+    flexDirection: "row",
     alignItems: "center",
+    justifyContent: "space-between",
+    backgroundColor: AppColors.white,
   },
+
   disabledButton: {
     backgroundColor: AppColors.gray,
   },
@@ -187,13 +187,16 @@ const styles = StyleSheet.create({
   },
   legend: {
     flexDirection: "row",
-    justifyContent: "space-around",
-    paddingHorizontal: 20,
-    paddingVertical: 15,
-    backgroundColor: AppColors.lightGray,
+    alignItems: "center",
+    paddingHorizontal: "10%",
+    width: "80%",
+    justifyContent: "space-between",
+    marginBottom: 10,
   },
   legendItem: {
     alignItems: "center",
+    gap: 12,
+    flexDirection: "row",
   },
   legendText: {
     color: AppColors.gray,
@@ -217,8 +220,13 @@ const styles = StyleSheet.create({
     fontSize: 20,
   },
   totalPriceContainer: {
-    flex: 1,
-    marginRight: 15,
+    width: "30%",
+    backgroundColor: "#A6A6A61A",
+    paddingVertical: 4,
+    // paddingVertical: 12,
+    borderRadius: 8,
+    alignItems: "center",
+    justifyContent: "center",
   },
   totalPriceLabel: {
     color: AppColors.gray,

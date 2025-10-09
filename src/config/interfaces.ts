@@ -17,7 +17,14 @@ export type TTextType =
   | "THIRTEENSEMIBOLD"
   | "TWELVEBOLD"
   | "TWELVEREGULAR"
-  | "TWELVESEMIBOLD";
+  | "TWELVESEMIBOLD"
+  | "ELEVENBOLD"
+  | "ELEVENREGULAR"
+  | "ELEVENSEMIBOLD"
+  | "TENBOLD"
+  | "TENREGULAR"
+  | "TENSEMIBOLD";
+
 export interface ITypography extends TextProps {
   type: TTextType;
   color?: TextStyle["color"];
